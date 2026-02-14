@@ -1,0 +1,66 @@
+{
+  "name": "auto-backup-bot",
+  "regions": ["was"],
+  "services": [
+    {
+      "name": "main",
+      "type": "web",
+      "instance_type": "nano",
+      "scaling": {
+        "min": 1,
+        "max": 1
+      },
+      "ports": [
+        {
+          "port": 5000,
+          "protocol": "http"
+        }
+      ],
+      "routes": [
+        {
+          "path": "/",
+          "port": 5000
+        }
+      ],
+      "health_checks": [
+        {
+          "http": {
+            "port": 5000,
+            "path": "/health"
+          },
+          "grace_period": 60
+        }
+      ],
+      "env": [
+        {
+          "key": "BOT_TOKEN",
+          "value": "@SECRET:BOT_TOKEN"
+        },
+        {
+          "key": "DISCORD_CLIENT_ID",
+          "value": "@SECRET:DISCORD_CLIENT_ID"
+        },
+        {
+          "key": "DISCORD_CLIENT_SECRET",
+          "value": "@SECRET:DISCORD_CLIENT_SECRET"
+        },
+        {
+          "key": "TURNSTILE_SITE_KEY",
+          "value": "@SECRET:TURNSTILE_SITE_KEY"
+        },
+        {
+          "key": "TURNSTILE_SECRET_KEY",
+          "value": "@SECRET:TURNSTILE_SECRET_KEY"
+        },
+        {
+          "key": "WEBHOOK_SECRET",
+          "value": "@SECRET:WEBHOOK_SECRET"
+        },
+        {
+          "key": "FLASK_SECRET_KEY",
+          "value": "@SECRET:FLASK_SECRET_KEY"
+        }
+      ]
+    }
+  ]
+}
