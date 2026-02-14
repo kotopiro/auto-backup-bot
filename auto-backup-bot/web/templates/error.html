@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>エラー - Auto Backup Bot</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="error-box">
+            <div class="error-icon">❌</div>
+            <h1>認証エラー</h1>
+            <p class="error-message">{{ message }}</p>
+            
+            <div class="error-info">
+                <h2>🔍 考えられる原因</h2>
+                <ul>
+                    <li>認証がキャンセルされた</li>
+                    <li>セッションが期限切れ</li>
+                    <li>不正なリクエスト</li>
+                    <li>システムエラー</li>
+                </ul>
+            </div>
+            
+            <div class="actions">
+                <a href="/" class="btn btn-primary">もう一度試す</a>
+                <a href="https://discord.gg/your-support-server" class="btn btn-secondary">サポートサーバー</a>
+            </div>
+            
+            <div class="footer">
+                <p>問題が解決しない場合は、サポートサーバーでお問い合わせください</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

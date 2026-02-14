@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto Backup Bot - 認証</title>
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="auth-box">
+            <div class="logo">
+                <h1>🔒 Auto Backup Bot</h1>
+                <p class="subtitle">サーバーメンバーバックアップシステム</p>
+            </div>
+            
+            <div class="info-section">
+                <h2>📋 このBotについて</h2>
+                <ul>
+                    <li>✅ サーバーメンバー情報を安全にバックアップ</li>
+                    <li>✅ いつでも復元可能</li>
+                    <li>✅ 完全自動化システム</li>
+                    <li>✅ 高速・安全・簡単</li>
+                </ul>
+            </div>
+            
+            <div class="warning-section">
+                <h3>⚠️ 注意事項</h3>
+                <p>
+                    この認証により、Botがあなたの基本情報（ユーザー名、ID）にアクセスし、
+                    サーバーへの参加を管理できるようになります。
+                </p>
+            </div>
+            
+            <form id="auth-form" method="POST">
+                <div class="turnstile-container">
+                    <div class="cf-turnstile" 
+                         data-sitekey="{{ site_key }}"
+                         data-callback="onTurnstileSuccess">
+                    </div>
+                </div>
+                
+                <button type="submit" id="auth-button" disabled>
+                    <span class="button-icon">🔐</span>
+                    Discord認証を開始
+                </button>
+            </form>
+            
+            <div class="footer">
+                <p>Powered by AJS Library</p>
+                <p class="security">
+                    <span class="security-badge">🛡️ Cloudflare保護</span>
+                    <span class="security-badge">🔒 OAuth2認証</span>
+                </p>
+            </div>
+        </div>
+    </div>
+    
+    <script src="{{ url_for('static', filename='js/auth.js') }}"></script>
+</body>
+</html>
